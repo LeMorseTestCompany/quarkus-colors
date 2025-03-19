@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quarkus-colors-static
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'quarkus-colors-static'
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: helm-charts/
+    repoURL: 'https://github.com/LeMorseTestCompany/quarkus-colors.git'
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: name
+          value: 'my-quarkus-colors'
+        - name: replicaCount
+          value: 1
+        - name: image.repository
+          value: lemorse/quarkus-colors
+        - name: image.tag
+          value: f521006f8c8fdc512e22fe791e5d2f7cb7f1f9f0
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

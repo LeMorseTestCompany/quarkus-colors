@@ -1,0 +1,5 @@
+name: my-quarkus-colors
+replicaCount: 5
+image:
+  repository: lemorse/quarkus-colors
+  tag: f521006f8c8fdc512e22fe791e5d2f7cb7f1f9f0

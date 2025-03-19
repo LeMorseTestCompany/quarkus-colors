@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: my-quarkus-colors
+  name: my-quarkus-colors
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-quarkus-colors
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: my-quarkus-colors
+    spec:
+      containers:
+      - image: lemorse/quarkus-colors:f521006f8c8fdc512e22fe791e5d2f7cb7f1f9f0
+        name: hello-colors-app
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
